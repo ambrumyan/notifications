@@ -1,0 +1,50 @@
+<html ng-app="demo">
+    <head>
+        <title>Notification messages</title>
+        <link rel="stylesheet" href="./css/notification-messages/notification-messages.css">
+        <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <body>
+        
+
+        <div ng-controller="mainController" class="container">
+
+            <div class="row"> 
+                <div class="col-md-4 col-md-offset-4">       
+                    <h1>Generator</h1>  
+                    <form name="notification" novalidate>
+                        <div class="form-group has-danger">
+                            <label for="title">
+                                Title: 
+                            </label>
+                            <input type="text" class="form-control" id="title" ng-model="title" placeholder="Enter notification title">
+                        </div>
+
+                        <div class="form-group"  ng-class="{'has-error': (notification.$submitted && notification.body.$invalid) }">
+                            <label for="body">
+                                Body:
+                            </label>
+                             <input type="text" class="form-control" name="body"  id="body" ng-model="body" placeholder="Enter notification body" required>
+                        </div>
+
+
+                        <div class="form-group"  ng-class="{'has-error': (notification.$submitted && notification.category.$invalid) }">
+                            <label class="control-label" for="category">Category</label>
+                            <select name="category" id="category" class="form-control" ng-options="item as item.label for item in categories track by item.id" ng-model="category" required></select>
+                        </div>
+                        <div>
+                           
+                            <button type="submit" ng-click="notification.$valid && notify()" class="btn btn-primary" >Notify</button>
+                        
+                        </div>
+
+                    </form>
+                 </div>
+            </div>
+        </div>
+
+        <script src="./bower_components/angular/angular.min.js"></script>
+        <script src="./app/modules/notification-messages/notification-messages.js"></script>
+        <script src="./app/app.js"></script>
+    </body>
+</html>

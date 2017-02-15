@@ -1,0 +1,79 @@
+@import "bower_components/compass-sass-mixins/lib/compass";
+
+$warning-bg-color:  #ec971f;
+$error-bg-color:  #d9534f;
+$info-bg-color:  #5bc0de;
+$combined-bg-color:  #5bc0de;
+$font-color:  #fff;
+
+
+
+.ri-notification {
+    border-radius: 5px;
+    position: fixed;
+    z-index: 9999;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    color: $font-color;
+    box-sizing: border-box;
+    font-size: 12px;
+    @include transition-duration(0.5s);
+    @include transition-timing-function('ease');
+    & > h3 {
+        display: block;
+        margin: 10px 10px 0 10px;
+        padding: 0 0 5px 0;
+        text-align: left;
+        font-weight: bold;
+    }
+    & a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    & > .message, & > .title {
+        padding: 10px 10px 10px 10px;
+    }
+    & > .title{
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    &.warning {
+        background:  $warning-bg-color;
+    }
+    &.error {
+        background: $error-bg-color;
+    }
+    &.info {
+        background: $info-bg-color;
+    }
+
+    &:hover{
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    &:hover .close-button{
+        display: block;
+    }
+
+    & .close-button{
+        cursor:pointer;
+        color: $font-color;
+        font-size: 31px;
+        font-weight: bold;
+        line-height: 0px;
+        padding: 11px 3px;  
+        position: absolute;;
+        right: 3px;
+        top: 3px;
+        display: none;
+    }
+
+    & .close-button:before {
+        content: "×";
+    }
+
+
+
+}
